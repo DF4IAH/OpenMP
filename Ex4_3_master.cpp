@@ -21,7 +21,7 @@ int main(void)
 			printf("master: id = %ld\r\n", id);
 		}
 
-		#pragma omp barrier
+		//#pragma omp barrier
 
 		id = omp_get_thread_num();
 		printf("id = %ld\r\n", id);
