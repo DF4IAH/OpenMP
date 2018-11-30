@@ -15,7 +15,7 @@ int main(void)
 	{
 		id = omp_get_thread_num();
 
-		#pragma omp single
+		#pragma omp single nowait
 		{
 			id += 100;
 			printf("single: id = %ld\r\n", id);
