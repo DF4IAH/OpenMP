@@ -26,7 +26,9 @@ void fir64(double out[], long len, const double in[])
 {
 	double sum;
 
+	//omp_set_num_threads(1);
 	omp_set_num_threads(omp_get_num_procs());
+
 	#pragma omp parallel for private(sum)
 	for (long idx = NUM_COEF; idx < len; idx++) {
 		sum = 0.0;
@@ -46,7 +48,7 @@ int main(void)
 	struct timeval tv;
 
 	for (long idx = 0; idx < NUM_SLICES; idx++) {
-		sweep[idx] = sin((idx * pow(10, 2.0 * idx / (double)NUM_SLICES)) / 100.0);
+		sweep[idx] = sin((idx * pow(10, 1.5 * idx / (double)NUM_SLICES)) / 100.0);
 	}
 
 	gettimeofday(&tv, NULL);
@@ -66,7 +68,7 @@ int main(void)
 	}
 	#endif
 
-	printf("tdiff=%ld ms, num_procs=%d\r\n", t2 - t1, omp_get_num_procs());
+	printf("tdiff=%ld us, num_procs=%d\r\n", t2 - t1, omp_get_num_procs());
 
 	return 0;
 }
