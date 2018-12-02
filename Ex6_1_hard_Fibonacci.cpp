@@ -20,7 +20,7 @@ int main(void)
 			#pragma omp ordered
 			{
 				fib[idx + 2] = c = fib[idx] + fib[idx + 1];
-				printf("%02d: %ld\r\n", idx, c);
+				printf("%02ld: %ld\r\n", idx, c);
 			}
 		}
 	}
