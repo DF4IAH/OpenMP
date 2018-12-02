@@ -1,7 +1,15 @@
-CC = g++-mp-8 -fopenmp
+#CC = g++-mp-8 -fopenmp
+CC = g++ -fopenmp
 
-BIN = Ex1_1_threads Ex2_1_pi Ex3_1_pi_parallel Ex3_2_pi_parallel-for Ex4_1_pi_parallel-for-reduction Ex4_2_barrier_wait-nowait Ex4_3_master Ex4_4_single Ex4_5_ordered Ex4_6_simple-lock Ex4_7_dynamic Ex5_1_pi-by-dartboard Ex6_1_hard_Fibonacci
-OBJ = $(BIN:%=%.o)
+BIN  = Ex1_1_threads 
+BIN += Ex2_1_pi 
+BIN += Ex3_1_pi_parallel Ex3_2_pi_parallel-for 
+BIN += Ex4_1_pi_parallel-for-reduction Ex4_2_barrier_wait-nowait Ex4_3_master Ex4_4_single Ex4_5_ordered Ex4_6_simple-lock Ex4_7_dynamic 
+BIN += Ex5_1_pi-by-dartboard 
+BIN += Ex6_1_hard_Fibonacci
+BIN += Test1_FIR64
+
+OBJ  = $(BIN:%=%.o)
 
 all: $(BIN)
 
