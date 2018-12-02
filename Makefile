@@ -14,8 +14,10 @@ OBJ  = $(BIN:%=%.o)
 all: $(BIN)
 
 %: %.cpp 
-	$(CC) -o $@ $<
+	mkdir -p build
+	$(CC) -o build/$@ $<
 
 .PHONY: clean
 clean:
 	rm -rf $(BIN) $(OBJ)
+	rm -rf build
