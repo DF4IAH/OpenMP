@@ -11,7 +11,7 @@ int main(void)
 
 	//omp_set_num_threads(cnt_threads);
 
-	#pragma omp parallel for reduction (+:sum)
+	#pragma omp target teams distribute parallel for simd reduction (+:sum) map(tofrom:sum)
 	for (long i = 0; i < num_steps; i++)
 	{
 		double x = (i + 0.5) * step;
