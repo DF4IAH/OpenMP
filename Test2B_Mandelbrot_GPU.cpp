@@ -54,7 +54,7 @@ int main()
 	omp_set_num_threads(width);
 
 	#pragma omp target map(tofrom:DISP) 
-	#pragma omp teams distribute parallel for num_teams(height / 4) num_threads(width * 4)
+	#pragma omp teams distribute parallel for num_teams(height) num_threads(width)
 	for (int pix = 0; pix < num_pixels; ++pix)
 	{
 		const int x = pix % width, y = pix / width;

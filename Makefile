@@ -1,4 +1,5 @@
-CC = g++-mp-8 -fopenmp
+CC = g++-mp-8 -std=c++11 -fopenmp -DOPENMP -foffload="-O3" -O3
+#-foffload=nvptx-none
 #CC = g++ -fopenmp
 
 BIN  = Ex1_1_threads 
