@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "omp.h"
 
 
@@ -10,7 +11,11 @@ static void fill_rand(long len, double* ary)
 {
 	long idx;
 
+#ifdef __unix__
 	sranddev();
+#else
+	srand(time(NULL));
+#endif
 
 	#pragma omp parallel for private(idx)
 	for (idx = 0; idx < len; idx++) {
@@ -26,7 +31,7 @@ static double Sum_array(long len, const double* ary)
 	#pragma omp parallel for private(idx)
 	for (long idx = 0; idx < len; idx++)
 		s += ary[idx];
-	
+
 	return s;
 }
 
