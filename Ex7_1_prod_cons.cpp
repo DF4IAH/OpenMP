@@ -18,7 +18,7 @@ static void fill_rand(long len, double* ary)
 {
 	long idx;
 
-#ifndef WIN32
+#ifdef WIN32
 	sranddev();
 #else
 	srand(time(NULL));
