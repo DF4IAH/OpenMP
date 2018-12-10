@@ -3,6 +3,13 @@
 #include <time.h>
 #include "omp.h"
 
+#ifndef WIN32
+#include <unistd.h>
+#else
+#define random rand
+#define srandom srand
+#endif
+
 
 const long N = 256;
 
@@ -11,7 +18,7 @@ static void fill_rand(long len, double* ary)
 {
 	long idx;
 
-#ifdef __unix__
+#ifndef WIN32
 	sranddev();
 #else
 	srand(time(NULL));
